@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-900 text-gray-100 antialiased;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.1), transparent 50%),
+      radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.1), transparent 50%);
+  }
+}
+
+@layer components {
+  .glow {
+    @apply relative;
+  }
+  
+  .glow::after {
+    @apply absolute inset-0 rounded-lg opacity-0 transition-opacity;
+    content: '';
+    box-shadow: 0 0 15px theme('colors.purple.400');
+  }
+  
+  .glow:hover::after {
+    @apply opacity-100;
+  }
+
+  .glass-card {
+    @apply rounded-xl border border-white/20 bg-white/10 backdrop-blur-xl;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
